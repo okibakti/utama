@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bahagia Belajar Bahasa Arab — Gratis | Bahagia Project</title>
+<meta name="description" content="Sudah bisa baca tulisan Arab tapi masih gelap artinya? Aplikasi gratis untuk memahami aturan susunan kalimat Arab, dijelaskan pakai bahasa sehari-hari dan contoh yang banyak.">
+<meta property="og:title" content="Bahagia Belajar Bahasa Arab — Gratis">
+<meta property="og:description" content="Penjelasan bahasa sehari-hari, contoh diberi arti kata per kata, dan latihan membaca teks tanpa harakat. Tanpa daftar, tanpa unduh.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Karla:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EBDA;
+  --paper-2:#E9E0C9;
+  --paper-3:#DED2B4;
+  --ink:#17233D;
+  --ink-soft:#4A5570;
+  --rubric:#A33A2A;
+  --gold:#9B7620;
+  --teal:#26665C;
+  --c-rafa:#26665C;
+  --c-nashab:#A33A2A;
+  --c-jar:#2B4A8B;
+  --c-hf:#7A7160;
+  --c-fi:#5A4076;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Karla','Segoe UI',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --ar:'Amiri','Scheherazade New','Traditional Arabic',serif;
+  --r:3px;
+  --line:1px solid var(--paper-3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(circle at 10% 4%, rgba(155,118,32,.05), transparent 42%),
+    radial-gradient(circle at 92% 96%, rgba(23,35,61,.05), transparent 42%);
+}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rubric);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rubric);margin:0 0 14px
+}
+h1,h2,h3{letter-spacing:-.015em;margin:0}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(25px,3.6vw,34px);line-height:1.2}
+h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.3}
+p{margin:0 0 15px}
+.lede{font-size:17.5px;color:var(--ink-soft);max-width:54ch}
+
+/* ---------- tombol ---------- */
+.cta{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  background:var(--rubric);color:var(--paper);border:1.5px solid var(--rubric);
+  padding:14px 26px;border-radius:99px;font-size:16px;font-weight:700;
+  transition:transform .18s,box-shadow .18s,background .18s
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(163,58,42,.22);background:#8B2F21}
+.cta .arr{transition:transform .18s}
+.cta:hover .arr{transform:translateX(3px)}
+.cta.line{background:none;color:var(--ink);border-color:var(--ink)}
+.cta.line:hover{background:var(--ink);color:var(--paper);box-shadow:none}
+.cta.pale{background:none;color:var(--paper);border-color:rgba(242,235,218,.5)}
+.cta.pale:hover{background:var(--paper);color:var(--ink);box-shadow:none}
+.mikro{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px}
+
+/* ---------- pengumuman gratis ---------- */
+.pengumuman{
+  background:var(--rubric);color:var(--paper);text-align:center;
+  padding:12px 22px;font-size:14.5px;line-height:1.5;letter-spacing:.005em
+}
+.pengumuman b{font-weight:700}
+.pengumuman .sorot{
+  background:var(--paper);color:var(--rubric);font-weight:700;
+  font-size:1.25em;
+  padding:2px 11px;border-radius:99px;white-space:nowrap;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone
+}
+
+.gratis{
+  display:flex;gap:13px;align-items:flex-start;margin-top:22px;max-width:54ch;
+  border:1px dashed var(--teal);background:rgba(38,102,92,.06);
+  padding:14px 17px;border-radius:var(--r)
+}
+.gratis .cap{
+  font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--teal);background:var(--paper);border:1px solid var(--teal);
+  border-radius:99px;padding:5px 11px;flex:none;margin-top:2px;white-space:nowrap
+}
+.gratis p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.6}
+.gratis b{color:var(--ink)}
+
+/* ---------- kepala ---------- */
+.top{display:flex;justify-content:flex-end;padding:18px 0 0}
+.brand{
+  display:inline-flex;align-items:center;gap:11px;text-decoration:none;
+  background:var(--paper-2);border:1.5px solid var(--paper-3);border-radius:99px;padding:6px 8px 6px 15px;
+  transition:border-color .18s,background .18s
+}
+.brand:hover{border-color:var(--rubric);background:#FFFCF4}
+.brand .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft);display:block;line-height:1.2}
+.brand .n{font-family:var(--serif);font-size:15.5px;font-weight:600;line-height:1.2;display:block}
+.brand .go{width:26px;height:26px;border-radius:50%;background:var(--rubric);color:var(--paper);display:grid;place-items:center;font-size:12px}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;padding:46px 0 62px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:34px;padding:32px 0 48px}}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,50px);line-height:1.09;max-width:16ch}
+.hero h1 em{font-style:italic;color:var(--rubric)}
+.hero .lede{margin:20px 0 28px}
+
+/* ---------- SIGNATURE: kartu bergilir ---------- */
+.morph{
+  display:grid;background:var(--paper-2);border:var(--line);border-right:3px solid var(--rubric);
+  border-radius:var(--r);padding:26px 24px 22px
+}
+.state{grid-area:1/1;opacity:0;transition:opacity .6s ease;pointer-events:none}
+.state.on{opacity:1;pointer-events:auto}
+.state .ar{
+  direction:rtl;font-family:var(--ar);font-size:clamp(30px,5.4vw,42px);line-height:1.75;margin-bottom:6px
+}
+.state .ar b{font-weight:400;color:var(--rubric)}
+.state .id{font-size:16px;margin-bottom:14px}
+.state .peran{
+  display:flex;align-items:baseline;gap:9px;border-top:var(--line);padding-top:12px;flex-wrap:wrap
+}
+.state .peran .tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  border-radius:99px;padding:3px 10px;color:var(--paper)
+}
+.state .peran .ket{font-size:13.5px;color:var(--ink-soft)}
+.t-rafa{background:var(--c-rafa)} .t-nashab{background:var(--c-nashab)} .t-jar{background:var(--c-jar)}
+.dots{display:flex;gap:7px;margin-top:18px}
+.dots button{width:8px;height:8px;padding:0;border-radius:50%;border:0;background:var(--paper-3);transition:background .2s,width .2s}
+.dots button[aria-current="true"]{background:var(--rubric);width:22px;border-radius:99px}
+.morph-cap{font-size:13.5px;color:var(--ink-soft);margin:14px 2px 0;line-height:1.55}
+@media (prefers-reduced-motion:reduce){
+  .morph{display:block}
+  .state{opacity:1;pointer-events:auto}
+  .state + .state{margin-top:22px;border-top:var(--line);padding-top:20px}
+  .dots{display:none}
+}
+
+/* ---------- tiga langkah ---------- */
+.langsung{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--paper-3);border:1px solid var(--paper-3);
+  border-radius:var(--r);overflow:hidden;margin-top:6px
+}
+@media(max-width:760px){.langsung{grid-template-columns:1fr}}
+.langsung .sel{background:var(--paper-2);padding:21px 21px 19px;display:flex;gap:14px;align-items:flex-start}
+.langsung .no{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rubric);
+  flex:none;margin-top:5px
+}
+.langsung h3{font-size:17px;margin-bottom:5px}
+.langsung p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.langsung-cap{font-size:14px;color:var(--ink-soft);max-width:64ch;margin:18px 0 0;line-height:1.6}
+.langsung-cap b{color:var(--ink)}
+
+/* ---------- pita gelap ---------- */
+.pita{background:var(--ink);color:#E7E2D4;padding:62px 0;margin:0 0 68px}
+.pita h2{color:var(--paper)}
+.pita .eyebrow{color:#D8A96F}
+.keluhan{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:38px}
+@media(max-width:820px){.keluhan{grid-template-columns:1fr;gap:26px}}
+.keluhan .item{border-top:2px solid rgba(231,226,212,.28);padding-top:16px}
+.keluhan h3{color:var(--paper);font-size:19px;margin-bottom:7px}
+.keluhan p{color:#B9C0CE;font-size:14.5px;margin:0}
+.pita .tutup{margin:38px 0 0;color:#D8A96F;font-size:15px;max-width:56ch}
+
+/* ---------- bagian umum ---------- */
+section.blok{padding:0 0 68px}
+.judul{max-width:60ch;margin-bottom:30px}
+.dua{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:820px){.dua{grid-template-columns:1fr;gap:26px}}
+.kartu{background:var(--paper-2);border:var(--line);border-left:3px solid var(--gold);padding:22px 24px;border-radius:var(--r)}
+.kartu.hijau{border-left-color:var(--teal)}
+.kartu h3{margin-bottom:6px}
+.kartu .ar-judul{font-family:var(--ar);font-size:24px;color:var(--gold);margin-bottom:8px}
+.kartu p{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px}
+.kartu p:last-child{margin-bottom:0}
+
+table.akar{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:4px}
+table.akar td{border-bottom:var(--line);padding:7px 0}
+table.akar td.a{font-family:var(--ar);font-size:23px;direction:rtl;text-align:right;width:42%;white-space:nowrap}
+
+/* ---------- maknani ---------- */
+.maknani{
+  direction:rtl;display:flex;flex-wrap:wrap;gap:8px 4px;justify-content:center;
+  background:var(--paper-2);border:var(--line);border-right:3px solid var(--rubric);
+  padding:24px 18px 18px;border-radius:var(--r)
+}
+.kata{direction:rtl;text-align:center;padding:2px 10px 4px}
+.kata .a{font-family:var(--ar);font-size:clamp(26px,4.4vw,32px);line-height:1.5;display:block;white-space:nowrap}
+.kata .u{height:2px;border-radius:2px;margin:2px 0 6px;background:var(--paper-3)}
+.kata .g{direction:ltr;font-size:12px;color:var(--ink-soft);display:block;white-space:nowrap}
+.kata .t{direction:ltr;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:3px;white-space:nowrap}
+.kata.rafa .u{background:var(--c-rafa)} .kata.rafa .t{color:var(--c-rafa)}
+.kata.nashab .u{background:var(--c-nashab)} .kata.nashab .t{color:var(--c-nashab)}
+.kata.jar .u{background:var(--c-jar)} .kata.jar .t{color:var(--c-jar)}
+.kata.fi .u{background:var(--c-fi)} .kata.fi .t{color:var(--c-fi)}
+.kata.hf .u{background:var(--c-hf)} .kata.hf .t{color:var(--c-hf)}
+.legenda{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.legenda span{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink-soft)}
+.legenda i{width:15px;height:3px;border-radius:2px;display:block}
+
+/* ---------- gundul ---------- */
+.gundul{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;margin-top:8px}
+@media(max-width:760px){.gundul{grid-template-columns:1fr;gap:14px}}
+.gundul .sisi{background:var(--paper-2);border:var(--line);border-radius:var(--r);padding:20px 18px 16px;text-align:center}
+.gundul .sisi .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
+.gundul .sisi .a{direction:rtl;font-family:var(--ar);font-size:clamp(24px,4.2vw,30px);line-height:1.9}
+.gundul .sisi.kitab{border-left:3px solid var(--gold)}
+.gundul .panah{font-size:22px;color:var(--gold);text-align:center}
+@media(max-width:760px){.gundul .panah{transform:rotate(90deg)}}
+
+/* ---------- daftar isi ---------- */
+.isi{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--paper-3);border:1px solid var(--paper-3);border-radius:var(--r);overflow:hidden}
+@media(max-width:900px){.isi{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.isi{grid-template-columns:1fr}}
+.isi .sel{background:var(--paper);padding:20px 18px}
+.isi .num{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;color:var(--rubric)}
+.isi .nm{font-weight:700;font-size:15px;margin:7px 0 3px}
+.isi .ket{font-size:13px;color:var(--ink-soft);line-height:1.5}
+
+/* ---------- cocok / belum ---------- */
+.daftar{list-style:none;margin:0;padding:0}
+.daftar li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:var(--line);font-size:15px}
+.daftar li:last-child{border-bottom:0}
+.daftar .mk{flex:none;font-weight:700;line-height:1.5}
+.ya .mk{color:var(--teal)} .tidak .mk{color:var(--rubric)}
+
+/* ---------- faq ---------- */
+details{border-bottom:var(--line)}
+summary{
+  list-style:none;cursor:pointer;padding:17px 34px 17px 0;position:relative;
+  font-family:var(--serif);font-size:18.5px;font-weight:600
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';position:absolute;right:6px;top:15px;font-family:var(--sans);font-size:21px;color:var(--rubric);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 18px;color:var(--ink-soft);font-size:15px;max-width:66ch}
+
+/* ---------- penutup ---------- */
+.penutup{background:var(--paper-2);border:var(--line);border-top:3px solid var(--rubric);border-radius:var(--r);padding:46px 34px;text-align:center;margin-bottom:60px}
+.penutup h2{max-width:20ch;margin:0 auto 14px}
+.penutup .lede{margin:0 auto 26px}
+.tombol-baris{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+footer{border-top:var(--line);padding:24px 0 46px;font-size:13.5px;color:var(--ink-soft)}
+footer a{color:var(--rubric);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- modal form ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(23,35,61,.55);backdrop-filter:blur(2px);
+  display:none;align-items:center;justify-content:center;padding:20px;z-index:100
+}
+.overlay.on{display:flex}
+.modal{
+  background:var(--paper);border:1px solid var(--paper-3);border-top:3px solid var(--rubric);
+  border-radius:var(--r);max-width:420px;width:100%;padding:30px 28px 26px;
+  position:relative;box-shadow:0 20px 50px rgba(23,35,61,.25)
+}
+.modal .tutup-x{
+  position:absolute;top:14px;right:14px;background:none;border:0;font-size:20px;
+  color:var(--ink-soft);line-height:1;padding:6px;border-radius:50%
+}
+.modal .tutup-x:hover{background:var(--paper-2);color:var(--ink)}
+.modal h3{font-size:21px;margin-bottom:6px}
+.modal .ket{font-size:14px;color:var(--ink-soft);margin-bottom:20px}
+.modal label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 6px}
+.modal .field{margin-bottom:15px}
+.modal input{
+  width:100%;padding:11px 13px;border:1.5px solid var(--paper-3);border-radius:var(--r);
+  background:var(--paper-2);color:var(--ink);font-family:var(--sans);font-size:14.5px;
+  transition:border-color .18s
+}
+.modal input:focus{outline:none;border-color:var(--rubric)}
+.modal .err{font-size:12px;color:var(--rubric);margin-top:5px;display:none}
+.modal .field.invalid input{border-color:var(--rubric)}
+.modal .field.invalid .err{display:block}
+.modal .cta{width:100%;justify-content:center;margin-top:6px}
+.modal .privasi{font-size:11.5px;color:var(--ink-soft);text-align:center;margin:14px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="pengumuman">
+  Alhamdulillah, aplikasi ini <span class="sorot">gratis</span> <b>sepenuhnya.</b>
+</div>
+
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="https://bahagiaproject.com" target="_blank" rel="noopener">
+      <span><span class="k">Dirakit oleh</span><span class="n">Bahagia Project</span></span>
+      <span class="go" aria-hidden="true">&#8599;</span>
+    </a>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" style="grid-template-columns:1fr">
+    <div>
+      <p class="eyebrow">Aplikasi Gratis &amp; Praktis Belajar Bahasa Arab</p>
+      <h1>Sudah bisa baca tulisan Arab, tapi masih <em>gelap</em> artinya?</h1>
+      <p class="lede">Belajar aturan bahasa Arab dari nol, gratis sepenuhnya. Tinggal klik — tanpa unduh, tanpa install. Super Praktis.</p>
+      <button type="button" class="cta" data-buka-form>Buka aplikasinya <span class="arr" aria-hidden="true">&rarr;</span></button>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+  <footer>
+    Dirakit oleh <a href="https://bahagiaproject.com" target="_blank" rel="noopener">Bahagia Project</a> &nbsp;&middot;&nbsp; bahagiaproject.com
+  </footer>
+</div>
+
+<!-- ================= MODAL FORM ================= -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-judul">
+    <button type="button" class="tutup-x" id="tutupModal" aria-label="Tutup">&times;</button>
+    <h3 id="modal-judul">Sebelum masuk, kenalan dulu yuk</h3>
+    <p class="ket">Isi data singkat ini, lalu langsung diarahkan ke aplikasinya. Gratis, tanpa biaya apapun.</p>
+    <form id="formDaftar" novalidate>
+      <div class="field" id="fNama">
+        <label for="inNama">Nama</label>
+        <input type="text" id="inNama" name="nama" autocomplete="name" placeholder="Nama lengkap">
+        <div class="err">Nama wajib diisi.</div>
+      </div>
+      <div class="field" id="fEmail">
+        <label for="inEmail">Email</label>
+        <input type="email" id="inEmail" name="email" autocomplete="email" placeholder="nama@email.com">
+        <div class="err">Masukkan email yang valid.</div>
+      </div>
+      <div class="field" id="fWa">
+        <label for="inWa">Nomor WhatsApp</label>
+        <input type="tel" id="inWa" name="wa" autocomplete="tel" placeholder="08xxxxxxxxxx">
+        <div class="err">Masukkan nomor WhatsApp yang valid.</div>
+      </div>
+      <button type="submit" class="cta">Lanjut ke aplikasi <span class="arr" aria-hidden="true">&rarr;</span></button>
+      <p class="privasi">Data hanya dipakai untuk keperluan aplikasi ini dan sharing info penting dari Bahagia Project &mdash; tidak dibagikan ke pihak lain.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PENGATURAN PEMILIK SITUS
+   Ganti alamat di bawah dengan lokasi aplikasinya.
+   ============================================================ */
+const APP_URL = 'https://bahagiaproject.com/arab';
+const PESAN_BAGIKAN = 'Aku nemu aplikasi belajar Bahasa Arab yang enak dipakai \u2014 gratis, penjelasannya bahasa sehari-hari, contohnya banyak. Cobain:';
+
+/* penanda sumber (?src=nama-grup) ikut disertakan saat redirect ke aplikasi */
+let SRC='';
+try{ SRC=new URLSearchParams(location.search).get('src')||''; }catch(e){}
+
+(function(){
+  const bag=document.getElementById('bagikan');
+  if(bag){
+    const tautan = (location.origin||'') + (location.pathname||'') + (SRC?'?src='+encodeURIComponent(SRC):'');
+    bag.href = 'https://wa.me/?text=' + encodeURIComponent(PESAN_BAGIKAN + '\n\n' + tautan);
+  }
+})();
+
+/* modal form: nama, email, whatsapp -> lalu redirect ke aplikasi
+   Jika data pernah diisi sebelumnya (tersimpan di localStorage),
+   form tidak ditampilkan lagi & langsung redirect ke aplikasi. */
+(function(){
+  const overlay=document.getElementById('overlay');
+  const modal=overlay ? overlay.querySelector('.modal') : null;
+  const form=document.getElementById('formDaftar');
+  const tutupBtn=document.getElementById('tutupModal');
+  if(!overlay||!form) return;
+
+  const KEY_LS='bahagia_lead';
+
+  function ambilTersimpan(){
+    try{
+      const raw=localStorage.getItem(KEY_LS);
+      if(!raw) return null;
+      const data=JSON.parse(raw);
+      if(data && data.nama && data.email && data.wa) return data;
+      return null;
+    }catch(e){ return null; }
+  }
+  function simpan(data){
+    try{ localStorage.setItem(KEY_LS, JSON.stringify(data)); }catch(e){}
+  }
+  function bangunTujuan(data){
+    const params=new URLSearchParams();
+    params.set('nama', data.nama);
+    params.set('email', data.email);
+    params.set('wa', data.wa);
+    if(SRC) params.set('src', SRC);
+    return APP_URL + (APP_URL.indexOf('?')>=0 ? '&' : '?') + params.toString();
+  }
+
+  let terakhirFokus=null;
+
+  function bukaModal(){
+    terakhirFokus=document.activeElement;
+    overlay.classList.add('on');
+    document.body.style.overflow='hidden';
+    setTimeout(()=>document.getElementById('inNama').focus(),10);
+  }
+  function tutupModal(){
+    overlay.classList.remove('on');
+    document.body.style.overflow='';
+    if(terakhirFokus) terakhirFokus.focus();
+  }
+
+  document.querySelectorAll('[data-buka-form]').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      const tersimpan=ambilTersimpan();
+      if(tersimpan){
+        window.location.href = bangunTujuan(tersimpan);
+        return;
+      }
+      bukaModal();
+    });
+  });
+  tutupBtn.addEventListener('click', tutupModal);
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) tutupModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && overlay.classList.contains('on')) tutupModal(); });
+
+  function tandaiError(idField, salah){
+    const f=document.getElementById(idField);
+    f.classList.toggle('invalid', salah);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nama=document.getElementById('inNama').value.trim();
+    const email=document.getElementById('inEmail').value.trim();
+    const wa=document.getElementById('inWa').value.trim().replace(/[\s-]/g,'');
+
+    const namaOk = nama.length>=2;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const waOk = /^(\+?62|0)8[0-9]{8,12}$/.test(wa);
+
+    tandaiError('fNama', !namaOk);
+    tandaiError('fEmail', !emailOk);
+    tandaiError('fWa', !waOk);
+
+    if(!namaOk||!emailOk||!waOk) return;
+
+    const data={nama:nama, email:email, wa:wa};
+    simpan(data);
+    window.location.href = bangunTujuan(data);
+  });
+})();
+
+/* kartu bergilir di hero */
+(function(){
+  const kotak=document.getElementById('morph');
+  const titik=document.getElementById('dots');
+  if(!kotak||!titik) return;
+  const isi=[...kotak.querySelectorAll('.state')];
+  let ke=0, jalan=null;
+
+  isi.forEach((_,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-label','Contoh '+(i+1));
+    b.addEventListener('click',()=>{ tampilkan(i); mulai(); });
+    titik.appendChild(b);
+  });
+  const tombol=[...titik.children];
+
+  function tampilkan(i){
+    ke=i;
+    isi.forEach((el,n)=>el.classList.toggle('on',n===i));
+    tombol.forEach((b,n)=>b.setAttribute('aria-current',String(n===i)));
+  }
+  function mulai(){
+    clearInterval(jalan);
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    jalan=setInterval(()=>tampilkan((ke+1)%isi.length),3400);
+  }
+  tampilkan(0);
+  mulai();
+})();
+</script>
+</body>
+</html>

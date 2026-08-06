@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrasi - Bahagia Project</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+}
+
+.container{
+    max-width:420px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0b5ed7;
+}
+
+#status{
+    margin-top:15px;
+    color:green;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Belajar Bahasa Arab Gratis</h2>
+
+<p>
+Silakan isi data terlebih dahulu.
+</p>
+
+<form id="registerForm">
+
+<input
+type="text"
+name="nama"
+placeholder="Nama Lengkap"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input
+type="tel"
+name="wa"
+placeholder="Nomor WhatsApp"
+required>
+
+<input
+type="hidden"
+name="source"
+value="arabic-app">
+
+<button type="submit">
+Mulai Belajar
+</button>
+
+</form>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbwsA1IK65uSjyfE3fzwuZ8nKoMznZlGnLjPvBLX2qUFm7_gQ_pHHsDLqPtlC_m3fz83eg/exec";
+
+const form =
+document.getElementById("registerForm");
+
+form.addEventListener("submit",e=>{
+
+e.preventDefault();
+
+document.getElementById("status").innerHTML="Menyimpan data...";
+
+fetch(scriptURL,{
+method:"POST",
+body:new FormData(form),
+redirect:"follow"
+})
+.then(r=>r.text())
+.then(data=>{
+
+document.getElementById("status").innerHTML="Berhasil!";
+
+window.location.href="index.html";
+
+})
+.catch(err=>{
+
+document.getElementById("status").innerHTML="Terjadi kesalahan.";
+
+console.log(err);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

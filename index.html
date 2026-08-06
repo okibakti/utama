@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahagia Project — Studio Kreatif &amp; AI</title>
+<meta name="description" content="Bahagia Project: jasa buat website, landing page, web aplikasi, video, foto, pelatihan, dan produk digital berbasis AI.">
+<link rel="icon" href="https://ik.imagekit.io/okibakti/Untitled%20design%20(10).png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171A33;
+    --ink-2:#20244A;
+    --cream:#F6EFDD;
+    --cream-2:#FFFBF2;
+    --marigold:#F2A93B;
+    --marigold-dark:#D98F22;
+    --coral:#E8735F;
+    --text-dark:#211B14;
+    --text-light:#FBF3E3;
+    --r-lg:28px;
+    --r-md:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--text-dark);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces', serif;margin:0;line-height:1.05;}
+  p{margin:0;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .section{padding:96px 0;}
+  @media (max-width:700px){ .section{padding:64px 0;} }
+
+  /* ---------- focus ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2.5px solid var(--marigold-dark);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,239,221,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(23,26,51,.1);
+  }
+  .nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17.5px;letter-spacing:-.01em;}
+  .logo svg{width:26px;height:26px;color:var(--marigold-dark);flex:none;}
+  .logo-img{height:34px;width:auto;object-fit:contain;flex:none;}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{font-weight:600;font-size:15px;opacity:.82;transition:opacity .15s;}
+  .nav-links a:hover{opacity:1;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:700;font-size:15px;
+    padding:13px 22px;border-radius:100px;
+    border:none;cursor:pointer;white-space:nowrap;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn svg{width:18px;height:18px;flex:none;}
+  .btn-primary{background:var(--marigold);color:var(--ink);box-shadow:0 6px 0 var(--marigold-dark);}
+  .btn-primary:hover{box-shadow:0 8px 0 var(--marigold-dark);}
+  .btn-primary:active{transform:translateY(2px);box-shadow:0 3px 0 var(--marigold-dark);}
+  .btn-outline{background:transparent;color:var(--text-light);border:1.5px solid rgba(251,243,227,.5);}
+  .btn-outline:hover{background:rgba(251,243,227,.1);}
+  .btn-dark{background:var(--ink);color:var(--text-light);box-shadow:0 6px 0 #05070f;}
+  .btn-dark:hover{box-shadow:0 8px 0 #05070f;}
+  .btn-dark:active{transform:translateY(2px);box-shadow:0 3px 0 #05070f;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--text-light);
+    overflow:hidden;
+  }
+  .hero-noise{
+    position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;pointer-events:none;
+  }
+  .hero .wrap{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:40px;
+    align-items:center;
+    padding-top:88px;padding-bottom:88px;
+  }
+  .hero-eyebrow{color:var(--marigold);}
+  .hero h1{
+    font-size:clamp(38px,5.2vw,64px);
+    font-weight:600;
+    font-style:italic;
+    margin:20px 0 22px;
+    max-width:11.5ch;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--marigold);
+  }
+  .hero-sub{
+    font-size:17.5px;line-height:1.6;opacity:.85;max-width:46ch;margin-bottom:34px;
+  }
+  .hero-cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .hero-note{font-size:13.5px;opacity:.65;display:flex;align-items:center;gap:8px;}
+  .dot-live{width:8px;height:8px;border-radius:50%;background:#5BD68A;flex:none;
+    box-shadow:0 0 0 0 rgba(91,214,138,.6);animation:pulse 2s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(91,214,138,.55);}
+    70%{box-shadow:0 0 0 8px rgba(91,214,138,0);}
+    100%{box-shadow:0 0 0 0 rgba(91,214,138,0);}
+  }
+  .hero-highlight{
+    justify-self:stretch;
+    background:rgba(251,243,227,.055);
+    border:1.5px solid rgba(251,243,227,.16);
+    border-radius:var(--r-lg);
+    padding:34px 30px;
+  }
+  .hero-highlight-mark{height:30px;width:auto;object-fit:contain;margin-bottom:22px;}
+  .hero-highlight-label{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--marigold);
+    margin-bottom:16px;
+  }
+  .hero-highlight-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .hero-highlight-list li{
+    display:flex;align-items:flex-start;gap:11px;
+    font-size:15.5px;font-weight:600;
+  }
+  .hero-highlight-list svg{width:19px;height:19px;flex:none;margin-top:1px;color:var(--marigold);}
+  .hero-highlight-list span{opacity:.75;font-weight:500;display:block;font-size:13.5px;margin-top:2px;}
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;text-align:left;padding-top:56px;padding-bottom:56px;}
+    .hero-highlight{order:-1;margin-bottom:8px;padding:26px 24px;}
+  }
+
+  /* ---------- JASA ---------- */
+  .jasa{background:var(--cream);}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .eyebrow{color:var(--coral);}
+  .section-head h2{font-size:clamp(28px,3.6vw,42px);font-weight:600;margin:16px 0 14px;}
+  .section-head p{font-size:16.5px;line-height:1.6;opacity:.75;max-width:52ch;}
+
+  .jasa-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  @media (max-width:900px){ .jasa-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .jasa-grid{grid-template-columns:1fr;} }
+
+  .jasa-card{
+    display:block;
+    background:var(--cream-2);
+    border:1.5px solid rgba(23,26,51,.09);
+    border-radius:var(--r-md);
+    padding:26px 24px 22px;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .jasa-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(23,26,51,.10);
+    border-color:rgba(232,91,79,.35);
+  }
+  .jasa-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--ink);color:var(--marigold);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .jasa-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .jasa-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17.5px;margin-bottom:8px;}
+  .jasa-card p{font-size:14.5px;line-height:1.55;opacity:.72;margin-bottom:16px;}
+  .card-link{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+    color:var(--coral);display:inline-flex;align-items:center;gap:6px;
+    letter-spacing:.02em;
+  }
+  .card-link .arrow{transition:transform .18s ease;}
+  .jasa-card:hover .card-link .arrow{transform:translateX(4px);}
+
+  /* ---------- PRODUK ---------- */
+  .produk{
+    background:linear-gradient(180deg,var(--ink-2) 0%, var(--ink) 100%);
+    color:var(--text-light);
+    position:relative;
+  }
+  .produk .section-head .eyebrow{color:var(--marigold);}
+  .produk .section-head p{color:var(--text-light);opacity:.78;}
+  .produk-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  }
+  .produk-grid .produk-card:nth-child(4),
+  .produk-grid .produk-card:nth-child(5){grid-column:span 1;}
+  @media (max-width:900px){ .produk-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .produk-grid{grid-template-columns:1fr;} }
+
+  .produk-card{
+    display:block;
+    background:rgba(251,243,227,.06);
+    border:1.5px solid rgba(251,243,227,.16);
+    border-radius:var(--r-md);
+    padding:24px;
+    transition:transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .produk-card:hover{
+    transform:translateY(-4px);
+    background:rgba(251,243,227,.11);
+    border-color:rgba(242,169,59,.5);
+  }
+  .produk-badge{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;font-weight:600;letter-spacing:.08em;
+    background:var(--marigold);color:var(--ink);
+    padding:5px 10px;border-radius:100px;margin-bottom:16px;
+  }
+  .produk-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin-bottom:8px;}
+  .produk-card p{font-size:14.5px;line-height:1.55;opacity:.78;margin-bottom:16px;}
+  .produk-card .card-link{color:var(--coral);}
+
+  /* ---------- CTA FOOTER SECTION ---------- */
+  .cta-final{
+    background:var(--marigold);
+    color:var(--ink);
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final .wrap{
+    padding-top:80px;padding-bottom:80px;
+    max-width:720px;
+  }
+  .cta-final h2{font-size:clamp(30px,4vw,46px);font-weight:600;font-style:italic;margin-bottom:14px;}
+  .cta-final p{font-size:16.5px;line-height:1.6;opacity:.82;max-width:52ch;margin-bottom:26px;}
+  .cta-final .btn-dark{box-shadow:0 6px 0 rgba(23,26,51,.55);}
+  .cta-final .btn-dark:hover{box-shadow:0 8px 0 rgba(23,26,51,.55);}
+  @media (max-width:760px){
+    .cta-final .wrap{text-align:left;padding-top:56px;padding-bottom:56px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--text-light);}
+  footer .wrap{
+    padding:52px 28px 34px;
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px;
+  }
+  .footer-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16.5px;}
+  .footer-logo svg{width:22px;height:22px;color:var(--marigold);}
+  .footer-logo-img{height:28px;box-shadow:none;}
+  .footer-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .footer-links a{font-size:14.5px;font-weight:600;opacity:.75;transition:opacity .15s;}
+  .footer-links a:hover{opacity:1;}
+  .footer-contact{font-size:14.5px;font-weight:600;opacity:.85;line-height:1.5;max-width:280px;text-align:right;}
+  @media (max-width:600px){ .footer-contact{text-align:left;max-width:none;} }
+  .footer-bottom{
+    border-top:1px solid rgba(251,243,227,.12);
+    padding:20px 28px 28px;
+    font-size:12.5px;opacity:.55;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- FLOATING WA ---------- */
+  .float-wa{
+    position:fixed;right:22px;bottom:22px;z-index:80;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--marigold);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(23,26,51,.35), 0 4px 0 var(--marigold-dark);
+    transition:transform .18s ease;
+  }
+  .float-wa:hover{transform:translateY(-3px) scale(1.04);}
+  .float-wa svg{width:26px;height:26px;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .dot-live{animation:none;}
+    .btn, .jasa-card, .produk-card, .float-wa{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <img src="https://ik.imagekit.io/okibakti/Untitled%20design%20(10).png" alt="Bahagia Project" class="logo-img">
+      Bahagia Project
+    </a>
+    <nav class="nav-links">
+      <a href="#jasa">Jasa</a>
+      <a href="#produk">Produk</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <a class="btn btn-primary js-wa" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.1 1 4 2.6 5.4L5 21l4.9-1.6c.7.2 1.4.3 2.1.3 5.1 0 9-3.6 9-8S17.1 3 12 3z"/></svg>
+      Chat WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <svg class="hero-noise" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0"/></filter>
+    <rect width="100%" height="100%" filter="url(#n)"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow hero-eyebrow">Studio Kreatif &amp; AI</p>
+      <h1>Bikin sesuatu yang <em>bikin bahagia.</em></h1>
+      <p class="hero-sub">Bahagia Project bantu kamu wujudkan website, konten, dan produk digital — dari obrolan santai soal ide, sampai hasilnya jadi.</p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary js-wa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.1 1 4 2.6 5.4L5 21l4.9-1.6c.7.2 1.4.3 2.1.3 5.1 0 9-3.6 9-8S17.1 3 12 3z"/></svg>
+          Chat WhatsApp Sekarang
+        </a>
+        <span class="hero-note"><span class="dot-live"></span> Tim kami biasanya balas cepat</span>
+      </div>
+    </div>
+    <div class="hero-highlight" aria-hidden="true">
+      <img src="https://ik.imagekit.io/okibakti/Untitled%20design%20(10).png" alt="" class="hero-highlight-mark">
+      <p class="hero-highlight-label">Yang bisa kami bantu</p>
+      <ul class="hero-highlight-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg>
+          <div>Website, landing page &amp; web aplikasi<span>Buat baru atau lanjutin yang sudah ada</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg>
+          <div>Video &amp; foto<span>Konten promosi sampai siap posting</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg>
+          <div>Produk digital &amp; AI siap pakai<span>Mantra Foto, Karakteria Kids, dan lainnya</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg>
+          <div>Pelatihan tim<span>Materi disesuaikan kebutuhan kamu</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JASA ============ -->
+<section class="jasa section" id="jasa">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Jasa Kami</p>
+      <h2>Butuh dibantu wujudkan ide?</h2>
+      <p>Ceritain kebutuhan kamu, kami yang urus dari sana — mau mulai dari nol atau lanjutin yang sudah ada.</p>
+    </div>
+    <div class="jasa-grid">
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="8.6" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Buat Website</h3>
+        <p>Website company profile atau bisnis yang rapi, cepat, dan enak dipakai.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><path d="M12 2c2.5 2 4 5.5 4 9 0 2-.6 3.8-1.5 5.2L12 19l-2.5-2.8C8.6 14.8 8 13 8 11c0-3.5 1.5-7 4-9z"/><circle cx="12" cy="10" r="1.6"/><path d="M9 16l-2 4 4-1.5M15 16l2 4-4-1.5"/></svg></div>
+        <h3>Landing Page</h3>
+        <p>Halaman promosi yang fokus satu tujuan: bikin orang klik dan tanya.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5l9 4.5 9-4.5"/></svg></div>
+        <h3>Web Aplikasi</h3>
+        <p>Sistem atau aplikasi berbasis web sesuai kebutuhan bisnis kamu.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><path d="M3 9.5l1.5-4h14l1.5 4"/><rect x="3" y="9.5" width="18" height="10.5" rx="1.5"/><path d="M6 9.5l1-3.5M10.5 9.5l1-3.5M15 9.5l1-3.5"/></svg></div>
+        <h3>Buat Video</h3>
+        <p>Video promosi, konten media sosial, sampai video edukasi.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A1.5 1.5 0 015.5 7h2l1-1.5h7L16.5 7h2A1.5 1.5 0 0120 8.5v9A1.5 1.5 0 0118.5 19h-13A1.5 1.5 0 014 17.5v-9z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
+        <h3>Buat Foto</h3>
+        <p>Foto produk, foto brand, sampai foto konten yang siap posting.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="jasa-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <div class="jasa-icon"><svg viewBox="0 0 24 24"><path d="M2 9l10-4.5L22 9l-10 4.5L2 9z"/><path d="M6 11v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4"/><path d="M22 9v6"/></svg></div>
+        <h3>Pelatihan</h3>
+        <p>Kelas dan workshop untuk tim atau personal, materi disesuaikan.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUK ============ -->
+<section class="produk section" id="produk">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Produk Kami</p>
+      <h2>Produk digital siap pakai</h2>
+      <p>Selain jasa custom, kami juga menyiapkan produk digital dan AI yang bisa langsung kamu coba.</p>
+    </div>
+    <div class="produk-grid">
+
+      <a class="produk-card reveal" href="https://mantrafoto.vercell.app" target="_blank" rel="noopener">
+        <span class="produk-badge">Image AI Generator</span>
+        <h3>Mantra Foto</h3>
+        <p>Ubah foto biasa jadi hasil yang lebih estetik, cukup pakai "mantra" yang tepat.</p>
+        <span class="card-link">Coba sekarang <span class="arrow">→</span></span>
+      </a>
+
+      <a class="produk-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <span class="produk-badge">Video AI Generator</span>
+        <h3>Video AI Generator</h3>
+        <p>Bikin video dari teks atau gambar, cocok buat kebutuhan konten yang cepat.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="produk-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <span class="produk-badge">Karakter Anak</span>
+        <h3>Karakteria Kids</h3>
+        <p>Karakter ilustrasi khusus anak-anak, cocok untuk buku, konten edukasi, atau merchandise.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="produk-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <span class="produk-badge">E-Book</span>
+        <h3>E-Book Interactive</h3>
+        <p>E-book dengan elemen interaktif, bikin baca jadi pengalaman, bukan cuma teks.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="produk-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <span class="produk-badge">Tools</span>
+        <h3>Tools</h3>
+        <p>Kumpulan tools digital untuk membantu pekerjaan kamu jadi lebih cepat.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+      <a class="produk-card reveal js-wa" href="#" target="_blank" rel="noopener">
+        <span class="produk-badge">Web App</span>
+        <h3>Web Application</h3>
+        <p>Aplikasi web siap pakai untuk kebutuhan bisnis, dari dashboard sampai sistem internal.</p>
+        <span class="card-link">Tanya soal ini <span class="arrow">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="kontak">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Yuk Mulai</p>
+      <h2>Ngobrol dulu, gratis kok.</h2>
+      <p>Cerita singkat aja soal kebutuhan kamu — jasa atau produk yang mana — biar kami bisa bantu carikan solusi yang pas.</p>
+      <a class="btn btn-dark js-wa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.1 1 4 2.6 5.4L5 21l4.9-1.6c.7.2 1.4.3 2.1.3 5.1 0 9-3.6 9-8S17.1 3 12 3z"/></svg>
+        Chat ke 0813-1111-9374
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <a href="#top" class="footer-logo">
+      <img src="https://ik.imagekit.io/okibakti/Untitled%20design%20(10).png" alt="Bahagia Project" class="logo-img footer-logo-img">
+      Bahagia Project
+    </a>
+    <nav class="footer-links">
+      <a href="#jasa">Jasa</a>
+      <a href="#produk">Produk</a>
+      <a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+    <div class="footer-contact">
+      0813-1111-9374<br>
+      <span style="opacity:.75;font-weight:500;">Basecamp: Komplek BBD Ciganjur, Jagakarsa, Jakarta Selatan</span>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    <span>© 2026 Bahagia Project.</span>
+    <span>Dibuat dengan bahagia di Indonesia.</span>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WA ============ -->
+<a class="float-wa js-wa" href="#" target="_blank" rel="noopener" aria-label="Chat WhatsApp Bahagia Project">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.1 1 4 2.6 5.4L5 21l4.9-1.6c.7.2 1.4.3 2.1.3 5.1 0 9-3.6 9-8S17.1 3 12 3z"/></svg>
+</a>
+
+<script>
+  // Set semua tautan WhatsApp
+  var waURL = "https://wa.me/6281311119374?text=Halo%20Bahagia%20Project%2C%20saya%20mau%20tanya%20%3A";
+  document.querySelectorAll('.js-wa').forEach(function(el){ el.setAttribute('href', waURL); });
+
+  // Reveal on scroll
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if(reduceMotion){
+    items.forEach(function(el){ el.classList.add('is-visible'); });
+  } else if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+</script>
+</body>
+</html>
